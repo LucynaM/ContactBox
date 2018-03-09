@@ -1,0 +1,23 @@
+{% extends 'contacts_box/base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+    <h2>People</h2>
+{% endblock header %}
+
+{% block content %}
+    <ul>
+    {% for person in people %}
+        <li><a href="{% url 'contacts_box:person_details' person.id %}">{{ person }}</a>
+            </br>
+            <a href="{% url 'contacts_box:edit_person' person.id %}">edit</a>
+            <a href="{% url 'contacts_box:delete_person' person.id %}">delete</a>
+        </li>
+    {% empty %}
+        <li>There's no person yet.</li>
+    {% endfor %}
+    </ul>
+
+    <div><a class="btn btn-primary" href="{% url 'contacts_box:add_person' %}">add new</a></div>
+
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends 'contacts_box/base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+    <h2>{{ group }}</h2>
+{% endblock header %}
+
+{% block content %}
+
+    <ul>
+    {% for member in members %}
+        <li><a href="{% url 'contacts_box:person_details' member.id %}">{{ member }}</a></li>
+    {% endfor %}
+    </ul>
+
+{% endblock content %}

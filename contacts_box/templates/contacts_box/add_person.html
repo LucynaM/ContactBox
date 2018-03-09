@@ -1,0 +1,23 @@
+{% extends 'contacts_box/base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+    <h2>Add new person</h2>
+{% endblock header %}
+{% block content%}
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+        <h3>Personal data</h3>
+        {% bootstrap_form form_person %}
+        </br>
+        <h3>Address</h3>
+        {% bootstrap_form form_address %}
+        </br>
+        <h3>Phones</h3>
+        {% bootstrap_form form_phone %}
+        </br>
+        <h3>Emails</h3>
+        {% bootstrap_form form_email %}
+        <input type="submit" name="add" value="add" id="add" class="btn btn-primary">
+    </form>
+{% endblock content%}

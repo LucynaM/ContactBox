@@ -1,0 +1,15 @@
+{% extends 'contacts_box/base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+    <h2>Edit group</h2>
+{% endblock header %}
+
+{% block content%}
+    <form action="" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="edit" class="btn btn-primary">
+    </form>
+
+{% endblock content%}

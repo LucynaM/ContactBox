@@ -1,0 +1,26 @@
+{% extends './base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+    <h2>szukaj: </h2>
+{% endblock header %}
+
+{% block content %}
+    <form action="" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+        <input type="submit" name="submit" value="szukaj">
+    </form>
+    {% if people %}
+        <h4>people:</h4>
+        <ul>
+        {% for person in people %}
+            <li><a href="{% url 'contacts_box:person_details' person.id %}">{{ person }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% if msg %}
+        <p>{{ msg }}</p>
+    {% endif %}
+
+{% endblock content %}

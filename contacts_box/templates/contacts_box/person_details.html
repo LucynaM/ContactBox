@@ -1,0 +1,26 @@
+{% extends 'contacts_box/base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+    <h2>{{ person }}</h2>
+{% endblock header %}
+
+{% block content %}
+
+    <h4>{{ person.address.city }}, {{ person.address.street }} {{ person.address.house_nr }}{% if person.address.flat_nr %}/{{person.address.flat_nr}}{% endif%}</h4>
+    {% if person.description %}
+    <p>{{ person.description }}</p>
+    {% endif %}
+    {% if person.phones %}
+    {% for phone in person.phones.all %}
+    <h4>{{ phone.get_type_display }} phone: {{ phone.number }}</h4>
+    {% endfor %}
+    {% endif %}
+    {% if person.emails %}
+    {% for email in person.emails.all %}
+    <h4>{{ email.get_type_display }} email: {{ email.email }}</h4>
+    {% endfor %}
+    {% endif %}
+
+    <a class="btn btn-primary" href="{% url 'contacts_box:edit_person' person.id %}">edit</a>
+{% endblock content %}

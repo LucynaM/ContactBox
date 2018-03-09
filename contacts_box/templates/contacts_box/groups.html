@@ -1,0 +1,23 @@
+{% extends 'contacts_box/base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+    <h2>Groups</h2>
+{% endblock header %}
+
+{% block content %}
+    <ul>
+    {% for group in groups %}
+        <li><a href="{% url 'contacts_box:group_details' group.id %}">{{ group }}</a>
+            </br>
+            <a href="{% url 'contacts_box:edit_group' group.id %}">edit</a>
+            <a href="{% url 'contacts_box:delete_group' group.id %}">delete</a>
+        </li>
+    {% empty %}
+        <li>There's no group yet.</li>
+    {% endfor %}
+    </ul>
+
+    <div><a class="btn btn-primary" href="{% url 'contacts_box:add_group' %}">add new</a></div>
+
+{% endblock content %}
